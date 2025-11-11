@@ -1,7 +1,20 @@
 <main>
-  <app-root-comment class="root-comment"
-    user = "{{ username }}"
-    content = "{{ `csm`}} "
-    date="{{ `2025-11-11` }}">
-  </app-root-comment>
+  @for (comment of data; track $index){
+    <div class="comment-container">
+      <app-root-comment class="root-comment"
+        user = "{{ comment.user }}"
+        content = "{{ comment.content}} "
+        date="{{ comment.created }}">
+      </app-root-comment>
+      @for(reply of comment.comments; track $index) {
+        <br>
+        <app-root-comment class="root-comment"
+          [style.width]=`90%`
+          user = "{{ reply.user }}"
+          content = "{{ reply.content}} "
+          date="{{ reply.created }}">
+      |</app-root-comment>
+      }
+    </div>
+  }
 </main>

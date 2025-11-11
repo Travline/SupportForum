@@ -4,12 +4,21 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  .root-comment{
-    width: 50%;
-    background-color: #eeeeee;
+  .comment-container{
+    margin: 20px;
+    width: 40%;
+    background-color: #c5cdff;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
-    padding: 10px;
+    align-items: center;
+    .root-comment{
+      width: stretch;
+      background-color: #eeeeee;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+    }
   }
 }
