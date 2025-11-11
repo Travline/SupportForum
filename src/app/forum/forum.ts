@@ -2,6 +2,7 @@ import { Component, OnInit, inject} from '@angular/core';
 import { RootComment } from '../root-comment/root-comment';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { CommentForm } from '../comment-form/comment-form';
 
 interface CommentsResponse {
   idComment: number
@@ -15,7 +16,7 @@ interface CommentsResponse {
 }
 @Component({
   selector: 'app-forum',
-  imports: [RootComment, CommonModule],
+  imports: [RootComment, CommonModule, CommentForm],
   templateUrl: './forum.html',
   styleUrl: './forum.scss',
 })

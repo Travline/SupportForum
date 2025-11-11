@@ -1,0 +1,23 @@
+#comment {
+  width: stretch;
+  background-color: #c5cdff;
+  border-radius: 20px;
+  border-color: none;
+  border-style: none;
+  font-size: 20px;
+  height: 60px;
+  padding: 20px;
+  resize: none;
+  margin: 0 0 20px 0;
+}
+
+#comment:focus {
+  border-color: none;
+  border-style: none;
+  outline: none;
+}
+
+#send {
+  font-size: 20px;
+  padding: 10px;
+}

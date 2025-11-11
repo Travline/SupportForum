@@ -1,4 +1,5 @@
 <main>
+  <app-comment-form class="comment-send-container"></app-comment-form>
   @defer (when data$ | async) {
     @for (comment of (data$ | async); track $index){
       <div class="comment-container">
