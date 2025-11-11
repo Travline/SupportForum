@@ -27,7 +27,8 @@ export class Forum {
     'https://talkhubback.onrender.com/comments/implement/replies',
     {
       headers: {
-        'Full-URL': 'https://www.youtube.com/comments'
+        'Host-URL': 'https://support-forum-one.vercel.app',
+        'Full-URL': 'https://support-forum-one.vercel.app'
       }
     })
 

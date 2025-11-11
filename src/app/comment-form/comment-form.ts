@@ -21,6 +21,7 @@ export class CommentForm {
     }
     this.http.post('https://talkhubback.onrender.com/comments/implement', body, {
       headers: {
+        'Host-URL': 'https://support-forum-one.vercel.app',
         'Full-URL': 'https://support-forum-one.vercel.app'
       }
     }).subscribe({
