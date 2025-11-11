@@ -1,6 +1,7 @@
 import { Component, OnInit, inject} from '@angular/core';
 import { RootComment } from '../root-comment/root-comment';
 import { HttpClient } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 interface CommentsResponse {
   idComment: number
@@ -14,29 +15,19 @@ interface CommentsResponse {
 }
 @Component({
   selector: 'app-forum',
-  imports: [RootComment],
+  imports: [RootComment, CommonModule],
   templateUrl: './forum.html',
   styleUrl: './forum.scss',
 })
 export class Forum {
   username = 'Luis'
   private http = inject(HttpClient);
-  data: CommentsResponse[] = []
-
-  ngOnInit(): void {
-    this.http.get('https://talkhubback.onrender.com/implement/replies', {
+  data$ = this.http.get<CommentsResponse[]>(
+    'https://talkhubback.onrender.com/comments/implement/replies',
+    {
       headers: {
         'Full-URL': 'https://www.youtube.com/comments'
       }
-    }).subscribe({
-        next: (res) => {
-          this.data = res as CommentsResponse[]
-          console.log('Response:', res);
-        },
-        error: (err) => {
-          console.error('Error:', err);
-        }
-    });
+    })
 
-  }
 }

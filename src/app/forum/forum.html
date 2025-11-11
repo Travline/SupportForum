@@ -1,20 +1,26 @@
 <main>
-  @for (comment of data; track $index){
-    <div class="comment-container">
-      <app-root-comment class="root-comment"
-        user = "{{ comment.user }}"
-        content = "{{ comment.content}} "
-        date="{{ comment.created }}">
-      </app-root-comment>
-      @for(reply of comment.comments; track $index) {
-        <br>
+  @defer (when data$ | async) {
+    @for (comment of (data$ | async); track $index){
+      <div class="comment-container">
         <app-root-comment class="root-comment"
-          [style.width]=`90%`
-          user = "{{ reply.user }}"
-          content = "{{ reply.content}} "
-          date="{{ reply.created }}">
-      |</app-root-comment>
-      }
-    </div>
+          user = "{{ comment.user }}"
+          content = "{{ comment.content}} "
+          date="{{ comment.created }}">
+        </app-root-comment>
+        @for(reply of comment.comments; track $index) {
+          <br>
+          <app-root-comment class="root-comment"
+            [style.width]=`90%`
+            user = "{{ reply.user }}"
+            content = "{{ reply.content}} "
+            date="{{ reply.created }}">
+        |</app-root-comment>
+        }
+      </div>
+    }
+  } @placeholder {
+    <p>Cargando comentarios...</p>
+  } @loading {
+    <p>Preparando datos...</p>
   }
 </main>
